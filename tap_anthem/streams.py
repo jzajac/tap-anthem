@@ -11,7 +11,7 @@ from tap_anthem.client import AnthemStream, FormularyNavigatorStream
 class NhProvidersStream(AnthemStream):
     """Define custom stream."""
     name = "nh_providers"
-    path = '/PROVIDERS_NH.json'
+    path = "/PROVIDERS_NH.json"
     primary_keys = ["npi"]
     replication_key = "last_updated_on"
 
@@ -98,8 +98,8 @@ class NhPlansStream(AnthemStream):
         th.Property("network", th.ArrayType(
             th.ObjectType(
                 th.Property("network_tier", th.StringType))
-        )
-                    ),
+            )
+        ),
 
         th.Property("formulary", th.ArrayType(
             th.ObjectType(
@@ -126,7 +126,7 @@ class NhPlansStream(AnthemStream):
 class NhDrugsStream(FormularyNavigatorStream):
     """Define custom stream."""
     name = "drugs_nh"
-    path = '/37/drugs.json'
+    path = "/37/drugs.json"
     primary_keys = ["rxnorm_id"]
     # Replication key intentionally omitted
     # No property in source data would be usable for this purpose

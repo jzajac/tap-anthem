@@ -18,19 +18,6 @@ class AnthemStream(RESTStream):
     # From https://www22.anthem.com/cms-data-index.json/index.html
     url_base = "https://www22.anthem.com/CMS"
 
-    records_jsonpath = "$[*]"  # Or override `parse_response`.
-    next_page_token_jsonpath = "$.next_page"  # Or override `get_next_page_token`.
-
-    @property
-    def http_headers(self) -> dict:
-        """Return the http headers needed."""
-        headers = {}
-        if "user_agent" in self.config:
-            headers["User-Agent"] = self.config.get("user_agent")
-        # If not using an authenticator, you may also provide inline auth headers:
-        # headers["Private-Token"] = self.config.get("auth_token")
-        return headers
-
 
 class FormularyNavigatorStream(RESTStream):
     """FormularyNavigator (drugs) stream class."""
